@@ -9,7 +9,7 @@ var secret = {
 
 var Twitter = new TwitterPackage(secret);
 
-Twitter.stream('statuses/filter', {track: '@Gremio ‏'}, function(stream) {
+Twitter.stream('statuses/filter', {track: '@G1‏'}, function(stream) {
   stream.on('data', function(tweet) {
     console.log(tweet.text);
   });
