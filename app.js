@@ -1,15 +1,15 @@
 var TwitterPackage = require('twitter');
 
 var secret = {
-  consumer_key: 'YOURS',
-  consumer_secret: 'YOURS',
-  access_token_key: 'YOURS',
-  access_token_secret: 'YOURS'
+  consumer_key: 'qKjOCsSCHNIKgwpIq8QORrlh9',
+  consumer_secret: 'B5hDFU65gxUVCwxRLuazbYkZbN2ASlKmAgZJ5i7RFwmN5ZWszV',
+  access_token_key: '290752188-EmQCY3cgrILIbALQBsJ0bDClWUXWQuAVmskfKukN',
+  access_token_secret: 'AJ90q7To2OrfAw20R7U5ynvZ8seJCaSFbBZ9ywwkLjzPk'
 }
 
 var Twitter = new TwitterPackage(secret);
 
-Twitter.stream('statuses/filter', {track: '@kopzinksi'}, function(stream) {
+Twitter.stream('statuses/filter', {track: '@Gremio ‏'}, function(stream) {
   stream.on('data', function(tweet) {
     console.log(tweet.text);
   });
