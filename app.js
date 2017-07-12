@@ -18,27 +18,41 @@ var Post = mongoose.model('Post', {
   id: String,
   user: String,
   text: String,
-  data: Date
+  data: Date,
+  nota: String
 
 });
+var owner = "user2";
 
 var Twitter = new TwitterPackage(secret);
+
+
+  
 
 Twitter.stream('statuses/filter', {track: '@whindersson'}, function(stream) {
   stream.on('data', function(tweet) {
 
-    console.log("Id:"+tweet.id+"Usuario: "+tweet.user.name+"\nTweet: "+tweet.text);
-    //console.log("Usuario: "+tweet.user.name+"\nNome Real: "+screen_name+"\nHashtags: "+tweet.entities.hashtags+"\nQuem foi mencionado:"+entities.user_mentions+"\nTweet: "+tweet.text);
-    //console.log(tweet);
-    //console.log(tweet.entities.hashtags[0,1]);
+var PosNegFunction =  function(){
+  if (tweet.text == "merda" || tweet.text == "puta" || tweet.text == "idiota") {
+    nota = "tweet Malefico"
+  }else{
+    nota = "tweet Benefico"
+  }
+}
+    PosNegFunction();
+var post = new Post({ owner: owner, id: tweet.id, user: tweet.user.name, text: tweet.text, data: tweet.timestamp_ms, nota: nota    });
+   
 
-var post = new Post({ owner: "user2", id: tweet.id, user: tweet.user.name, text: tweet.text, data: tweet.timestamp_ms    });
+    //console.log("\nId:"+tweet.id+"\nUsuario: "+tweet.user.name+"\nTweet: "+tweet.text);
 
+
+console.log(post);
 post.save(function (err) {
           if (err) {
             console.log(err);
           } else {
             console.log('--------------------------------------------- Salvo no banco tweet ---------------------------------');
+           // console.log(post);
           }
 });
 
