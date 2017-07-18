@@ -9,9 +9,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node app.js"
+    "start": "node app2.js"
   },
   "author": "@kopzinski",
   "license": "MIT"
 }
-    

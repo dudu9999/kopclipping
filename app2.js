@@ -16,7 +16,7 @@ var Post = mongoose.model('Post', {
   owner: String, 
   id: String,
   user: String,
-  text: {type:String, unique:true},
+  text: [{type:String, unique:true}],
   data: Date,
 });
 
@@ -30,19 +30,7 @@ var Twitter = new TwitterPackage(secret);
 Twitter.stream('statuses/filter', {track: '@realDonaldTrump'}, function(stream) {
   stream.on('data', function(tweet) {
 
-  	var mapFunction = function() {
-                        emit(this.tweet.id, this.tweet.text);
-                    };
 
-     var reduceFunction = function(keyCustId, menssagem) {
- 
-     var wordsArray = [];
-                        menssagemc.forEach(function(menssagem){
-                            wordsArray.push(menssagem.split(" "));
-                        });
-
-                          return wordsArray;
-                      };
           ///console.log('--------------------------------------------- Salvo no banco tweet ---------------------------------');
 
 
